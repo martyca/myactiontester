@@ -11,6 +11,8 @@ jobs:
     - name: Hello world action step
       id: hello
       uses: martyca/mytestaction@master
+      env:
+        BAR: ${{ secrets.SECRET_FOO }}
       with:
         greeter: 'Mona the Octocat'
     # Use the output from the `hello` step
