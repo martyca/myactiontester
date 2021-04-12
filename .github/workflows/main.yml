@@ -3,8 +3,6 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    env:
-      FOO: ${{ secrets.SECRET_FOO }}
 
     name: A job to say hello
     steps:
@@ -12,7 +10,8 @@ jobs:
       id: hello
       uses: martyca/mytestaction@master
       env:
-        BAR: ${{ secrets.SECRET_FOO }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       with:
         greeter: 'Mona the Octocat'
     # Use the output from the `hello` step
