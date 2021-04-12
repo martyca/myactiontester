@@ -1,19 +1,16 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  awscli-job:
     runs-on: ubuntu-latest
-
-    name: A job to say hello
+    name: AWS test jobs
     steps:
-    - name: Hello world action step
-      id: hello
+    - name: Get caller identity
+      id: awscli
       uses: martyca/mytestaction@master
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      with:
-        greeter: 'Mona the Octocat'
     # Use the output from the `hello` step
     - name: Get the output time
       run: echo "The time was ${{ steps.hello.outputs.time }}"
