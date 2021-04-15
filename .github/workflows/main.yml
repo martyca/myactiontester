@@ -8,6 +8,8 @@ jobs:
   awscli-job:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - run: aws --version
     - run: aws sts get-caller-identity
     - run: aws ecr get-login-password | docker login --username AWS --password-stdin ${ECR_URL}
