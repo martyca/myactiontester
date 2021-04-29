@@ -13,7 +13,8 @@ jobs:
     - run: aws --version
     - run: aws sts get-caller-identity
     - run: mkdir -p ./artifacts
-    - run: cd ./artifacts
     - run: dd if=/dev/zero of=dummy.file bs=1024 count=10240
+      working-directory: artifacts 
     - run: pwd
+      working-directory: artifacts
     - run: ls -lah
