@@ -3,7 +3,7 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_DEFAULT_REGION: ap-southeast-2
-  ECR_URL: 405035356606.dkr.ecr.ap-southeast-2.amazonaws.com
+  BUCKET_NAME: caarels-artifacts
 jobs:
   awscli-job:
     runs-on: ubuntu-latest
@@ -12,7 +12,6 @@ jobs:
       uses: actions/checkout@v2
     - run: aws --version
     - run: aws sts get-caller-identity
-    - run: aws ecr get-login-password | docker login --username AWS --password-stdin ${ECR_URL}
-    - run: docker build -t github .
-    - run: docker tag github:latest ${ECR_URL}/github:latest
-    - run: docker push ${ECR_URL}/github:latest
+    - run: mkdir artifacts
+    - run: cd artifacts
+    - run: dd if=/dev/zero of=dummy.file bs=1024 count=10
