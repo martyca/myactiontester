@@ -14,4 +14,6 @@ jobs:
     - run: aws sts get-caller-identity
     - run: mkdir artifacts
     - run: cd artifacts
-    - run: dd if=/dev/zero of=dummy.file bs=1024 count=10
+    - run: dd if=/dev/zero of=dummy.file bs=1024 count=10240
+    - run: pwd
+    - run: ls -lah
