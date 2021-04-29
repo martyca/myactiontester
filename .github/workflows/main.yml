@@ -17,4 +17,4 @@ jobs:
       working-directory: artifacts 
     - run: pwd
       working-directory: artifacts
-    - run: ls -lah
+    - run: tree
